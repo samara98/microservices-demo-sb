@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/samara98/microservices-demo-sb-config
+          default-label: main
+          username: samara98
+          password: "{cipher}baf5e126c6e7e6c69e22e04262b5f7499126fc315cd39c70acdf70faed0df7ea67b1d607177a23cdad09c2167d24ac4907aa2b244635f5bb7255e201b49f2a97"
+          clone-on-start: true
+    fail-fast: true
+  security:
+    user:
+      name: "spring_cloud_user"
+      password: "{cipher}c0d85293cb01a46b3b629a12e5620f4e9d00d4ede8bdf248cf5b83e23f4536501e4b34a8d56b7a34fcee17aa01d05330"
+#      password: "springCloud_Pwd!"
+
+#encrypt:
+#  key: "Demo_Pwd!2020"

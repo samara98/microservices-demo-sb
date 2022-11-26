@@ -10,28 +10,28 @@ import org.springframework.retry.support.RetryTemplate;
 @Configuration
 public class RetryConfig {
 
-    private RetryConfigData retryConfigData;
+	private RetryConfigData retryConfigData;
 
-    public RetryConfig(RetryConfigData configData) {
-        this.retryConfigData = configData;
-    }
+	public RetryConfig(RetryConfigData configData) {
+		this.retryConfigData = configData;
+	}
 
-    @Bean
-    public RetryTemplate retryTemplate() {
-        RetryTemplate retryTemplate = new RetryTemplate();
+	@Bean
+	public RetryTemplate retryTemplate() {
+		RetryTemplate retryTemplate = new RetryTemplate();
 
-        ExponentialBackOffPolicy exponentialBackOffPolicy = new ExponentialBackOffPolicy();
-        exponentialBackOffPolicy.setInitialInterval(retryConfigData.getInitialIntervalMs());
-        exponentialBackOffPolicy.setMaxInterval(retryConfigData.getMaxIntervalMs());
-        exponentialBackOffPolicy.setMultiplier(retryConfigData.getMultiplier());
+		ExponentialBackOffPolicy exponentialBackOffPolicy = new ExponentialBackOffPolicy();
+		exponentialBackOffPolicy.setInitialInterval(retryConfigData.getInitialIntervalMs());
+		exponentialBackOffPolicy.setMaxInterval(retryConfigData.getMaxIntervalMs());
+		exponentialBackOffPolicy.setMultiplier(retryConfigData.getMultiplier());
 
-        retryTemplate.setBackOffPolicy(exponentialBackOffPolicy);
+		retryTemplate.setBackOffPolicy(exponentialBackOffPolicy);
 
-        SimpleRetryPolicy simpleRetryPolicy = new SimpleRetryPolicy();
-        simpleRetryPolicy.setMaxAttempts(retryConfigData.getMaxAttempts());
+		SimpleRetryPolicy simpleRetryPolicy = new SimpleRetryPolicy();
+		simpleRetryPolicy.setMaxAttempts(retryConfigData.getMaxAttempts());
 
-        retryTemplate.setRetryPolicy(simpleRetryPolicy);
+		retryTemplate.setRetryPolicy(simpleRetryPolicy);
 
-        return retryTemplate;
-    }
+		return retryTemplate;
+	}
 }
