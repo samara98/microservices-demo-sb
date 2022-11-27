@@ -10,7 +10,7 @@ spring:
           username: samara98
           password: "{cipher}baf5e126c6e7e6c69e22e04262b5f7499126fc315cd39c70acdf70faed0df7ea67b1d607177a23cdad09c2167d24ac4907aa2b244635f5bb7255e201b49f2a97"
           clone-on-start: true
-    fail-fast: true
+      fail-fast: true
   security:
     user:
       name: "spring_cloud_user"
